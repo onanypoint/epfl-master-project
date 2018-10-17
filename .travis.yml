@@ -1,0 +1,17 @@
+sudo: required
+language: generic
+services: docker
+script:
+- docker pull dxjoke/tectonic-docker
+- docker run --mount src=$TRAVIS_BUILD_DIR/,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
+  /bin/sh -c "tectonic --keep-intermediates --reruns 0 master-thesis.tex; biber master-thesis; tectonic master-thesis.tex"
+deploy:
+  provider: releases
+  api_key:
+    secure: sBy998j692EeVg/QjS0NIYVe+PboeQF+/nL5VUanw/Fm1m8md/vR//PZwdzu+D8Ia3qA5Fk+qcH18rt1NABw8cNWdLBcLOXdi1z96R8KGqurOiPxNIhhcdysQgEEjBuJkOF/EFhzLRy+G05jxIvdxq9DcBkEM1L1FwZie4m56Afu2P/E8xIvbHIzzHGo7hG7V4Tdbh0RVtaZtMNQUnb2P4R27ch+m8GKdoCYP86R8pr1KT/VLlaJc4+N7Ldk0ruB1TynZ3x+m+skqzdDVL+PZcWp5jPa5CIelVA1NbU1kohM0GWcMgNLowTDXr9UvV2JZI95/UZhwW2vAWlhGgU+jtD5t/BGTZOXunLeqbTOa4zCnU8uPSMg0mhCg/dddw0xYLvqrymuN+Gwm4vDmH/6X7WXxQfMML+Y3x/USFFlT9EjVqqolC5IsSD2z0y2ieYfz7Lga+AQ8FB2ET+6fCUvR2TuZJWdgbwdsZ0Kqy4hlUO2HZGpv1g6L17v9cAcdEmsZPeM1qsm2AGXBZMOT3Z2ucaHoxz+1PwrKE8J0gjkIvBX/DAUYpLGByWzS/JsDRHzgUrROihTqBRIZcNBFEzq08huzpAAzzmE4YP0fSY0nDk7XcC1hQUnHKBuR3XYeLIn/k3LjBMtjj6BXkRjP/h1auTJMnxPcS+G/XDsKDUQxl8=
+  file: ./master-thesis.pdf
+  skip_cleanup: true
+  on:
+    repo: onanypoint/epfl-master-project
+    tags: true
+    branch: master

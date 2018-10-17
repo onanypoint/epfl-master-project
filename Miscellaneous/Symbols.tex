@@ -1,0 +1,33 @@
+\lhead{\emph{Symbols \footnote{The nomenclature put in place in \cite{sutton_reinforcement_1998} is used.}}}  % Set the left side page header to "Symbols"
+
+\listofnomenclature{lll}  % Include a list of Symbols (a three column table)
+{
+$\alpha$, $\beta$ & step-size parameters\\
+$\gamma$ & discount-rate factor \\
+% symbol & name & unit \\
+$s$ & a state &  \\
+$a$ & an action &  \\
+$r$ & a reward &  \\
+$o$ & an observation (related to a state $s$)\\
+$v$ & communication symbol \\
+$A$ & set of available actions \\
+$S$ & set of states \\
+$O$ & set of observations\\
+$V$ & set of communication symbols (vocabulary) \\
+
+$t$ & discrete time step \\
+$T$ & final time step of an episode \\
+$G_t$ & return following time t \\
+$\pi$ & policy \\
+$\pi^*$ & optimal policy \\
+$\pi(s)$ & action taken in state $s$ under deterministic policy $\pi$ \\
+$\pi(a|s)$ & probability of taking action $a$ in state $s$ under stochastic policy $\pi$ \\
+
+$v_{\pi}(s)$ & value of state $s$ under policy $\pi$ (expected return)\\
+$v_{\pi^*}(s)$ & value of state $s$ under the optimal policy\\
+$q_{\pi}(s, a)$ & value of taking action $a$ in state $s$ under policy $\pi$ \\
+$q_{\pi^*}(s, a)$ & value of taking action $a$ in state $s$ under optimal policy\\
+
+$V$ & array estimates of state-value function $v_{\pi}$ \\
+$Q$ & array estimates of action-value function $q_{\pi}$\\
+}

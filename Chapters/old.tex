@@ -1,0 +1,61 @@
+
+% \begin{table}
+% \parbox{.5\linewidth}{
+% \centering
+% \begin{tabular}{|c|c|c|c}
+% \cline{1-3}
+% \backslashbox{$TBC2$}{$TBC1$} & Full  & \multicolumn{1}{l|}{Empty} &  \\ \cline{1-3}
+% Full  & \cellcolor[HTML]{EFEFEF} &  &  \\ \cline{1-3}
+% Empty & \cellcolor[HTML]{EFEFEF} & 1 &  \\\cline{1-3}
+% \end{tabular}
+% \caption*{Conveyed meaning to $agent_{arm1}$}
+% }
+% \hfill
+% \parbox{.5\linewidth}{
+% \centering
+% \begin{tabular}{|c|c|c|c}
+% \cline{1-3}
+% \backslashbox{$TBC2$}{$TBC1$} & Full  & \multicolumn{1}{l|}{Empty} &  \\ \cline{1-3}
+% Full  & \cellcolor[HTML]{EFEFEF} & \cellcolor[HTML]{EFEFEF}  &  \\ \cline{1-3}
+% Empty &  & 1 & \\\cline{1-3}
+% \end{tabular}
+% \caption*{Conveyed meaning to $agent_{arm2}$}
+% }
+% \caption{Example of communication protocol for $\mid V\mid  = 2$, $rwdt=-0.1$, $rwdc=-0.1$ and $\gamma=0.9$.}
+% \label{table:2msg-protocol-good}
+% \end{table}
+
+% Table~\ref{tab:2msg-protocol-good} depicts an example of a grounded protocol with $\mid V\mid = 2$. The tables only shows the messages interpreted by the specific agent as a call to action. The presence of a label $i$ in one of the cell indicates that $agent_{arm3c}$ sends the message $i$ and that the agent reacts to that message by transporting a cube if it can. Any other message sent by $agent_{arm3c}$ will be interpreted as "not safe" to transport and the agent will then select the $noop$ action. In this example, the feeding agents will only react to the message indicating that both buffer are empty. Because of the scarcity of the vocabulary, $agent_{arm3c}$ can only communicate one sub state beside the "not safe for both" to achieve a optimal solution.
+
+% It is now possible possible to represent the assignment of the vocabulary using a tuple of 4 sets. Each set contains the symbols relative to the grounded meaning. 
+
+% The example above becomes $(\{1\}, \{0\}, \{0\}, \{0\})$, indicating that the protocol use the message $1$ as "safe for both" and $0$ "not safe for both". It is import to note that even tough the intent of the message 1 is "safe for both" to transport a cube, in reality, $agent_{arm1}$ interpret this message as "safe for me" as it has no notion of existence of $agent_{arm2}$.
+
+
+% \begin{table}
+% \parbox{.5\linewidth}{
+% \centering
+% \begin{tabular}{|c|c|c}
+% \cline{1-3}
+% \backslashbox{$TBC2$}{$TBC1$} & Full  & \multicolumn{1}{l|}{Empty}  \\ \cline{1-3}
+% Full  & \cellcolor[HTML]{EFEFEF} & 1 \\ \cline{1-3}
+% Empty & \cellcolor[HTML]{EFEFEF} & 1  \\\cline{1-3}
+% \end{tabular}
+% \caption*{Conveyed meaning to $agent_{arm1}$}
+% }
+% \hfill
+% \parbox{.5\linewidth}{
+% \centering
+% \begin{tabular}{|c|c|c}
+% \cline{1-3}
+% \backslashbox{$TBC2$}{$TBC1$} & Full  & \multicolumn{1}{l|}{Empty}  \\ \cline{1-3}
+% Full  & \cellcolor[HTML]{EFEFEF} & \cellcolor[HTML]{EFEFEF}   \\ \cline{1-3}
+% Empty &  & 1 \\\cline{1-3}
+% \end{tabular}
+% \caption*{Conveyed meaning to $agent_{arm2}$}
+% }
+% \caption{Sub optimal example of communication protocol for $\mid V\mid  = 2$, $rwdt=-0.1$, $rwdc=-0.1$ and $\gamma=0.9$.}
+% \label{table:2msg-protocol-bad}
+% \end{table}
+
+% With a vocabulary size of 2, it is clear that the assignment must either be $(\{1\}, \{0\}, \{0\}, \{0\})$ or $(\{0\}, \{1\}, \{1\}, \{1\})$. Any other attribution of the vocabulary is sub-optimal. Table~\ref{tab:2msg-protocol-bad} depicts a sub optimal assignment diverging from the two listed before. The new protocol now assume that $agent_{arm3c}$ also send word $1$ in his sub state Empty/Full,  i.e $(\{1\}, \{1\}, \{0\}, \{0\})$. Because of this change in the protocol, it is now impossible for $agent_{arm2}$ to decipher whether it is safe to transport a cube or not. For $agent_{arm2}$, $1$ now indicates that $TBC2$ can either be full or empty. As a result $agent_{arm2}$ can no longer definitively now when it is safe to transport a cube and will either learn to not send any cube or send cube without taking into account the communication. Either way, this will result into a non optimal solution with less than 100\% of the cube sinked.
