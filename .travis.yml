@@ -4,15 +4,14 @@ services: docker
 script:
 - docker pull dxjoke/tectonic-docker
 - docker run --mount src=$TRAVIS_BUILD_DIR/,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
-  /bin/sh -c "tectonic master-thesis.tex"
+  /bin/sh -c "tectonic --keep-intermediates --reruns 0 master-thesis.tex; biber master-thesis; tectonic master-thesis.tex"
 deploy:
   provider: releases
   api_key:
-    secure: s/e9cVjYCh4alneu+W91CZtLxgz2y2qzf6D+w7IWP03LMGHbY13W68mdt95ehOtZPnIMDctnx2JiuJtHJm7iNuOc1AUKs01Afy39D2Z3kA3azFguP2Krd4ExJReagJ81E9eGZYcydajqsbkCaCuAhpX+iUfYvr/9KXdpUPy9wAd02jlHqJE8cgMj19z84ZmOUElUWZAcFuKbZDGwQqdAQOl7jFUKpAF23KRlT7yecxe56rd4HvBTeeaTHhMgCPRWpM52J7coWu1W9gHyQlfRpAAqIyjD7gh0StoAIYzzQHxCxYHU6o8ZIRTRJvvCDBvb/XSIK16JLCLsri/yZaPb8C8BLfHnAajM5wWAO2+JExcRAGVUx6UfO5UeFBfGKuZGXcYEEz5TTt9mbl0VaSEZM8d/xwH5vk4xAZyas7KzO1gBJlHA4HxU918gTx3DEKvDR9ZTO000u6NdXQ6KCG9cvWVEM+egZdcEkvlcjr7XJnfUuYmy25cK3nCOHS1hJyApW3rHglpS82lOj7A3RZTCqrsxwG5ZSDN0nw+SrXOxq8jBj8q24FFQn8uLc9NdrKLIZ3/knT2PqyNq6ltjZyCoNd6PZRD8u6PcJFl5U/WpZZtFtLFwmMa6MtPdwS01j9kWOzIKN6uxv137pwtnwFl56tZkMshDT4ocxZALV8Lt650=
-  file: 
-  - ./master-thesis.pdf
-  - ./otherfile.pdf
+    secure: sBy998j692EeVg/QjS0NIYVe+PboeQF+/nL5VUanw/Fm1m8md/vR//PZwdzu+D8Ia3qA5Fk+qcH18rt1NABw8cNWdLBcLOXdi1z96R8KGqurOiPxNIhhcdysQgEEjBuJkOF/EFhzLRy+G05jxIvdxq9DcBkEM1L1FwZie4m56Afu2P/E8xIvbHIzzHGo7hG7V4Tdbh0RVtaZtMNQUnb2P4R27ch+m8GKdoCYP86R8pr1KT/VLlaJc4+N7Ldk0ruB1TynZ3x+m+skqzdDVL+PZcWp5jPa5CIelVA1NbU1kohM0GWcMgNLowTDXr9UvV2JZI95/UZhwW2vAWlhGgU+jtD5t/BGTZOXunLeqbTOa4zCnU8uPSMg0mhCg/dddw0xYLvqrymuN+Gwm4vDmH/6X7WXxQfMML+Y3x/USFFlT9EjVqqolC5IsSD2z0y2ieYfz7Lga+AQ8FB2ET+6fCUvR2TuZJWdgbwdsZ0Kqy4hlUO2HZGpv1g6L17v9cAcdEmsZPeM1qsm2AGXBZMOT3Z2ucaHoxz+1PwrKE8J0gjkIvBX/DAUYpLGByWzS/JsDRHzgUrROihTqBRIZcNBFEzq08huzpAAzzmE4YP0fSY0nDk7XcC1hQUnHKBuR3XYeLIn/k3LjBMtjj6BXkRjP/h1auTJMnxPcS+G/XDsKDUQxl8=
+  file: ./master-thesis.pdf
   skip_cleanup: true
   on:
+    repo: onanypoint/epfl-master-project
     tags: true
     branch: master
