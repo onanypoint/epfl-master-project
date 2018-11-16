@@ -1,5 +1,4 @@
-# Master Project [![Build Status](https://api.travis-ci.com/onanypoint/epfl-master-project.svg)](https://travis-
-ci.com/onanypoint/epfl-master-project)
+# Master Project [![Build Status](https://api.travis-ci.com/onanypoint/epfl-master-project.svg)](https://travis-ci.com/onanypoint/epfl-master-project)
 ## Reinforcement Learning for Robotic Actors in Multi-Agent Setups 
 
 by [Yoann Ponti](https://github.com/onanypoint)
