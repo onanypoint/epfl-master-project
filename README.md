@@ -1,4 +1,7 @@
-# Master Project [![Build Status](https://api.travis-ci.com/onanypoint/epfl-master-project.svg)](https://travis-ci.com/onanypoint/epfl-master-project)
+# Master Project [![Build Status](https://api.travis-ci.com/onanypoint/epfl-master-project.svg)](https://travis-
+ci.com/onanypoint/epfl-master-project)
+## Reinforcement Learning for Robotic Actors in Multi-Agent Setups 
+
 by [Yoann Ponti](https://github.com/onanypoint)
 
 This is the source for the final report of my master's project at [EPFL](http://epfl.ch). In the report, the work I have done over 6 months at [NEC Laboratories Europe](https://www.neclab.eu/) is presented.
